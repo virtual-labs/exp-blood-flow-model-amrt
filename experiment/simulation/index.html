@@ -1,13 +1,256 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-		<!-- Your code goes here-->
+<html lang="en">
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V-Lab | Arterial Blood Flow Dynamics</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="app-header" id="mainHeader">
+    <div class="header-content">
+      <div class="logo">
+        <img src="images\logo.png" alt="Amrita Vishwa Vidyapeetham Logo" class="amrita-logo">
+      </div>
+      <h1>Basic Model of Blood Flow in Arteries</h1>
+    </div>
+  </header>
+
+  <main>
+    <section id="homePage" class="section">
+      <div class="theory-scroll-container">
+
+        <div class="theory-nav-container">
+          <nav class="main-nav theory-nav">
+            <button class="nav-btn active" id="theoryBtn" onclick="goToTheory()">Theory</button>
+            <button class="nav-btn inactive" id="simBtn" onclick="goToSimulation()">Simulation</button>
+          </nav>
+        </div>
+
+        <div class="theory-card main-theory">
+
+
+          <article class="doc-section">
+            <h3><span class="icon">🎯</span> Objective</h3>
+            <p>To visualize, simulate, and analyze blood flow dynamics in human arteries using a simplified mathematical
+              model. This experiment aims to study the effect of arterial radius, blood pressure, viscosity, and vessel
+              length on blood flow rate and velocity.</p>
+          </article>
+
+          <article class="doc-section">
+            <h3><span class="icon">📖</span> Introduction</h3>
+            <p>The human circulatory system plays a vital role in transporting oxygen, nutrients, hormones, and waste
+              products throughout the body. The heart acts as a pump that drives blood through a complex network of
+              arteries, veins, and capillaries.</p>
+          </article>
+
+          <article class="doc-section physics-box">
+            <h3><span class="icon">🧪</span> Theory: Poiseuille’s Law</h3>
+            <p>In small and medium-sized arteries, blood flow can be approximated as laminar flow. Under such
+              conditions, the flow rate is described by:</p>
+            <div class="formula-container">
+              <p class="formula">Q = &Delta;P&pi;r⁴ / 8&eta;L</p>
+            </div>
+            <ul class="params-grid">
+              <li><strong>Q:</strong> Volume flow rate</li>
+              <li><strong>r:</strong> Radius of the artery</li>
+              <li><strong>&Delta;P:</strong> Pressure Gradient</li>
+              <li><strong>&eta;:</strong> Dynamic viscosity</li>
+              <li><strong>L:</strong> Length of the artery</li>
+            </ul>
+          </article>
+
+          <article class="doc-section">
+            <h3><span class="icon">🛠️</span> Procedure</h3>
+            <ol class="step-list">
+              <li>Click the <strong>body anatomy</strong> to start.</li>
+              <li>Use the <strong>Sidebar Controls</strong> to change conditions (Normal to Blocked).</li>
+              <li>Adjust <strong>Radius</strong> and <strong>Pressure</strong> sliders.</li>
+              <li>Observe how blood cells flow through the artery.</li>
+            </ol>
+          </article>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+    <section id="simPage" class="section" style="display: none;">
+
+      <!-- STAGE 1: ENTRY (Image Only / Image Page) -->
+      <div id="sim-entry-stage" class="theory-scroll-container" style="display: flex;">
+        <div class="theory-card image-card">
+          <div class="human-body" onclick="goToHandView()">
+            <div class="anatomy-wrapper">
+              <img src="images\p1.png" alt="Human Anatomy" class="hand-image-entry">
+              <div class="pulse-point"></div>
+            </div>
+            <p class="click-instruction">Click the blinking red point to start</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 2: HAND VIEW (Controls + Canvas + Magnifier) -->
+      <div id="sim-hand-stage" class="sim-intro hand-view-container" style="display: none;">
+
+        <!-- Navigation moved inside sidebar as per request -->
+
+        <div class="lab-wrapper">
+
+          <!-- 1. LAB CONTROLS (Left Sidebar) -->
+          <aside class="controls-panel sidebar-full">
+            <div class="sidebar-header">
+              <!-- Theory/Sim Switcher -->
+              <div class="nav-toggle">
+                <button class="nav-btn inactive" onclick="goHome()">Theory</button>
+                <button class="nav-btn active">Simulation</button>
+              </div>
+
+            </div>
+            <div class="scroll-content">
+              <div class="control-group">
+                <label>Stages of Atherosclerosis Condition</label>
+                <div class="stage-grid">
+                  <button class="stage-btn active" onclick="setStage('normal')" id="btn-normal">Healthy Artery</button>
+                  <button class="stage-btn" onclick="setStage('fatty')" id="btn-fatty">Fatty Streak</button>
+                  <button class="stage-btn" onclick="setStage('plaque')" id="btn-plaque">Fibrofatty Plaque</button>
+                  <button class="stage-btn" onclick="setStage('blocked')" id="btn-blocked">Complicated Plaque</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label>Artery Radius: <span id="radius-val">220px</span></label>
+                <input type="range" id="radius-slider" min="150" max="350" value="220">
+              </div>
+
+              <div class="control-group">
+                <label>Pressure: <span id="pressure-val">Normal</span></label>
+                <input type="range" id="pressure-slider" min="1" max="100" value="50">
+              </div>
+
+              <div class="control-group">
+                <label>Flow Speed: <span id="speed-val">5 m/s</span></label>
+                <input type="range" id="speed-slider" min="1" max="10" value="5">
+              </div>
+
+              <button id="toggle-graph-btn" class="action-btn" onclick="toggleGraph()">
+                Show Analysis Graph 📈
+              </button>
+
+              <button id="reset-btn" class="action-btn" onclick="resetSimulation()" style="margin-top: 10px;"> Reset
+                Simulation ↺
+              </button>
+
+
+            </div>
+          </aside>
+
+          <div class="simulation-card">
+            <!-- 2. VECTOR HAND (Center) -->
+            <div class="hand-wrapper">
+
+              <svg class="hand-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet"
+                xmlns="http://www.w3.org/2000/svg">
+                <!-- ... SVG content ... -->
+                <defs>
+                  <linearGradient id="skinGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#c48a63;stop-opacity:1" />
+                    <stop offset="40%" style="stop-color:#e0b080;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#ffdbac;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+
+                <path
+                  d="M 50,350 L 50,200 L 300,180 C 320,175 340,150 380,130 C 420,110 500,105 550,115 C 580,120 590,140 560,155 C 540,165 500,170 480,175 C 530,170 630,175 660,190 C 680,200 660,215 630,220 C 600,225 550,225 530,225 C 560,225 680,230 710,245 C 730,255 710,270 680,270 C 600,270 540,260 530,255 C 560,260 630,270 660,285 C 680,295 660,310 630,315 C 600,320 540,310 520,300 C 540,305 580,315 600,325 C 620,335 600,350 570,350 C 500,350 400,330 300,320 L 50,350 Z"
+                  fill="url(#skinGradient)" stroke="#8d5524" stroke-width="2" />
+
+                <path d="M 350,200 Q 400,250 450,220" fill="none" stroke="#8d5524" stroke-width="2" opacity="0.4" />
+                <path d="M 380,280 Q 420,260 460,280" fill="none" stroke="#8d5524" stroke-width="2" opacity="0.4" />
+
+                <path d="M 60,260 Q 200,255 320,230" fill="none" stroke="#8a0000" stroke-width="14"
+                  stroke-linecap="round" />
+                <path d="M 60,260 Q 200,255 320,230" fill="none" stroke="#d32f2f" stroke-width="10"
+                  stroke-linecap="round" />
+                <path d="M 60,260 Q 200,255 320,230" fill="none" stroke="#ff6659" stroke-width="3"
+                  stroke-linecap="round" opacity="0.7" />
+
+                <path d="M 320,230 Q 360,220 390,200" fill="none" stroke="#d32f2f" stroke-width="6"
+                  stroke-linecap="round" />
+                <path d="M 320,230 Q 360,240 390,250" fill="none" stroke="#d32f2f" stroke-width="6"
+                  stroke-linecap="round" />
+              </svg>
+              <canvas id="handCanvas" class="flow-canvas"></canvas>
+
+              <!-- CONNECTOR LINE (Now inside wrapper to anchor to SVG coordinates) -->
+              <!-- CONNECTOR LINES -->
+              <div class="connector-desktop top"></div>
+              <div class="connector-desktop bottom"></div>
+              <div class="connector-mobile left"></div>
+              <div class="connector-mobile right"></div>
+
+              <p class="sim-instruction-text">Use controls to modify the artery</p>
+            </div>
+
+            <!-- 3. MAGNIFIER CONTAINER (Right) -->
+            <!-- Removed onclick="expandToFullLab()" -->
+            <div class="magnifier-container">
+              <div id="magnifier-content" class="magnifier-content">
+
+                <!-- Artery Layout (Permanently here now) -->
+                <div class="artery-wrapper magnified-artery" id="artery-wrapper">
+                  <div class="artery" id="artery">
+                    <div class="plaque-top" id="p-top"></div>
+                    <div class="plaque-bottom" id="p-bottom"></div>
+                  </div>
+                  <!-- Labels hidden in magnified view by CSS usually, but we might want them? 
+                      User said "full artery stimulation page instead... add lab control... next to hand image"
+                      Implies we see the artery IN the glass.
+                 -->
+                  <div class="artery-labels">
+                    <span class="label-text" style="text-align: left; transform: translateX(-20px);">Inflow</span>
+                    <span class="label-text" style="text-align: right; transform: translateX(20px);">Outflow</span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="glass-glare"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      </div>
+
+      <!-- Graph Container (Floating Overlay) -->
+      <div id="graph-container" style="display: none;">
+        <div style="font-size: 0.8rem; color: #aaa; margin-bottom: 5px; text-align: center;">Live Flow Analysis
+        </div>
+        <canvas id="flowChart"></canvas>
+
+        <!-- Controls -->
+        <div id="graph-controls" style="position: absolute; top: -10px; right: -10px; display: flex; gap: 5px;">
+          <button id="btn-maximize" onclick="toggleMaximize()" title="Maximize"
+            style="background: #444; color: white; border: none; width: 24px; height: 24px; border-radius: 50%; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">⛶</button>
+          <button onclick="toggleGraph()" title="Close"
+            style="background: #ef4444; color: white; border: none; width: 24px; height: 24px; border-radius: 50%; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">×</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+
 </body>
+
 </html>
