@@ -1,0 +1,23 @@
+
+/home/runner/work/exp-blood-flow-model-amrt/exp-blood-flow-model-amrt/experiment/simulation/js/main.js
+   49:3   warning  'setStage' is not defined                    no-undef
+  284:10  warning  'goToSimulation' is defined but never used   no-unused-vars
+  291:10  warning  'goToHandView' is defined but never used     no-unused-vars
+  301:5   warning  'setStage' is not defined                    no-undef
+  308:10  warning  'goHome' is defined but never used           no-unused-vars
+  363:10  warning  'toggleGraph' is defined but never used      no-unused-vars
+  444:9   warning  'canvas' is assigned a value but never used  no-unused-vars
+  550:19  warning  'Chart' is not defined                       no-undef
+
+/home/runner/work/exp-blood-flow-model-amrt/exp-blood-flow-model-amrt/experiment/simulation/script.js
+   49:3   warning  'setStage' is not defined                    no-undef
+  284:10  warning  'goToSimulation' is defined but never used   no-unused-vars
+  291:10  warning  'goToHandView' is defined but never used     no-unused-vars
+  301:5   warning  'setStage' is not defined                    no-undef
+  308:10  warning  'goHome' is defined but never used           no-unused-vars
+  363:10  warning  'toggleGraph' is defined but never used      no-unused-vars
+  444:9   warning  'canvas' is assigned a value but never used  no-unused-vars
+  550:19  warning  'Chart' is not defined                       no-undef
+
+✖ 16 problems (0 errors, 16 warnings)
+
