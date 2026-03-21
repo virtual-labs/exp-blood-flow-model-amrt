@@ -3,12 +3,12 @@
   "version": 2.0,
   "questions": [
     {
-          "question": "1. The structure that primarily regulates diffusion and osmosis in cells:",
+          "question": "1. The factor that strongly influences blood flow in arteries is:",
       "answers": {
-        "a": "Nucleus",
-        "b": "Cell membrane",
-        "c": "Ribosome",
-        "d": "Golgi apparatus"
+        "a": "Vessel color",
+        "b": "Vessel radius",
+        "c": "Blood temperature",
+        "d": "Heart size"
       },
  
       "correctAnswer": "b",
@@ -18,12 +18,27 @@
 
 
     {
-      "question": "2. In simple diffusion, molecules move across the membrane",
+      "question": "2. What is atherosclerosis?",
       "answers": {
-        "a": "With the help of ATP energy",
-        "b": "With carrier proteins only",
-        "c": "Directly through the lipid bilayer",
-        "d": "Through active transport pumps"
+        "a": "Infection of blood",
+        "b": "Narrowing of arteries due to plaque buildup",
+        "c": "Increase in blood pressure",
+        "d": "Enlargement of veins"
+      },
+      
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+
+
+
+    {
+      "question": "3. The role of arterioles in circulation is:",
+      "answers": {
+        "a": "Gas exchange",
+        "b": "Blood storage",
+        "c": "Regulation of resistance and flow",
+        "d": "Oxygen production"
       },
       
       "correctAnswer": "c",
@@ -33,12 +48,12 @@
 
 
     {
-      "question": "3. A solution that has the same solute concentration as the cell is called:",
+      "question": "4. The main effect of increased vascular resistance will cause:",
       "answers": {
-        "a": "Hypertonic",
-        "b": "Isotonic",
-        "c": "Hypotonic",
-        "d": "Saturated"
+        "a": "Increased blood flow",
+        "b": "Decreased blood flow",
+        "c": "No effect",
+        "d": "Increased oxygen diffusion"
       },
       
       "correctAnswer": "b",
@@ -46,31 +61,16 @@
     },
 
 
-
     {
-      "question": "4. Which molecules commonly move across membranes by diffusion?",
+      "question": "5. According to Poiseuille’s Law, blood flow is proportional to:",
       "answers": {
-        "a": "Oxygen and carbon dioxide",
-        "b": "DNA molecules",
-        "c": "Large proteins",
-        "d": "Starch molecules"
-      },
-      
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-
-
-    {
-      "question": "5. Diffusion is defined as the movement of molecules from:",
-      "answers": {
-        "a": "Lower concentration to higher concentration",
-        "b": "Higher concentration to lower concentration",
-        "c": "Equal concentration to unequal concentration",
-        "d": "Inside the cell to outside the cell"
+        "a": "Radius",
+        "b": "Radius²",
+        "c": "Radius³",
+        "d": "Radius⁴"
       },
      
-      "correctAnswer": "b",
+      "correctAnswer": "d",
       "difficulty": "beginner"
     }
   ]
