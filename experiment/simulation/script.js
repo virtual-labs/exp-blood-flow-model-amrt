@@ -156,6 +156,16 @@ function createCell() {
 
 // Expose setStage to global scope for HTML onclick access
 window.setStage = function (stageName) {
+  // Enable sliders and tools once a stage is selected
+  document.querySelectorAll('input[type="range"], #toggle-graph-btn, #reset-btn').forEach(el => {
+    if (el.disabled) {
+      el.disabled = false;
+      // Start animations on first real stage selection
+      isHandFlowActive = true;
+      updatePressure(); 
+    }
+  });
+
   currentStage = stageName;
   const config = STAGES[stageName];
   const h = getCurrentArteryHeight();
@@ -193,12 +203,12 @@ window.resetSimulation = function() {
   updatePressure();
   updateSpeed();
 
-  // 3. Reset Condition Stage
-  window.setStage('normal');
+  // 3. Reset completely to the Start Simulation screen
+  window.resetSimulationControls();
   
-  // 4. Force Graph Update if open
+  // 4. Force Graph Close if open
   if (isMaximized) {
-    // Optionally refresh or just update labels
+    toggleMaximize();
   }
 }
 
@@ -208,6 +218,7 @@ const handCanvas = document.getElementById('handCanvas');
 const handCtx = handCanvas ? handCanvas.getContext('2d') : null;
 let handParticles = [];
 let handAnimFrame;
+let isHandFlowActive = false; // Controls blood flow animation in the hand SVG
 
 // Coordinates from user provided SVG logic
 const ARTERY_PATH = {
@@ -275,7 +286,11 @@ function initHand() {
 function animateHand() {
   if (!handCanvas) return;
   handCtx.clearRect(0, 0, handCanvas.width, handCanvas.height);
-  handParticles.forEach(p => { p.update(); p.draw(handCanvas.width, handCanvas.height); });
+  
+  if (isHandFlowActive) {
+    handParticles.forEach(p => { p.update(); p.draw(handCanvas.width, handCanvas.height); });
+  }
+  
   handAnimFrame = requestAnimationFrame(animateHand);
 }
 
@@ -295,11 +310,56 @@ function goToHandView() {
   // START HAND ANIMATION
   setTimeout(initHand, 50);
 
-  // START BLOOD FLOW SIM (Active)
+  // START BLOOD FLOW SIM
   initSimulation();
-  if (!spawnInterval) {
-    setStage('normal');
+
+  // Setup Initial State: Start Button visible, all other controls disabled
+  window.resetSimulationControls();
+}
+
+window.resetSimulationControls = function() {
+  const startBtn = document.getElementById('start-sim-action-btn');
+  if (startBtn) startBtn.style.display = 'block';
+
+  // Disable all controls initially
+  document.querySelectorAll('.stage-btn, input[type="range"], #toggle-graph-btn, #reset-btn').forEach(el => el.disabled = true);
+  
+  // Remove active styling from stage buttons
+  document.querySelectorAll('.stage-btn').forEach(b => b.classList.remove('active'));
+
+  // Hide the simulation card
+  const simCard = document.querySelector('.simulation-card');
+  if (simCard) {
+    simCard.style.opacity = '0';
+    simCard.style.pointerEvents = 'none';
+    simCard.style.transition = 'opacity 0.4s ease';
   }
+  
+  // Pause flow completely
+  isHandFlowActive = false;
+  clearInterval(spawnInterval);
+  spawnInterval = null;
+  document.querySelectorAll('.cell').forEach(c => c.remove());
+
+  // Default visuals
+  document.documentElement.style.setProperty('--pulse-speed', `0s`); // Pause pulse until start
+}
+
+window.startLabSimulation = function() {
+  const startBtn = document.getElementById('start-sim-action-btn');
+  if (startBtn) startBtn.style.display = 'none';
+
+  // Note: Pulse is NOT restored here. It waits for Stage selection.
+
+  // Show the simulation card
+  const simCard = document.querySelector('.simulation-card');
+  if (simCard) {
+    simCard.style.opacity = '1';
+    simCard.style.pointerEvents = 'auto';
+  }
+
+  // Enable Stages Condition buttons
+  document.querySelectorAll('.stage-btn').forEach(btn => btn.disabled = false);
 }
 
 // expandToFullLab REMOVED
