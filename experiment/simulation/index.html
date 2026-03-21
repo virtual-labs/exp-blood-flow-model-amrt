@@ -114,36 +114,41 @@
 
             </div>
             <div class="scroll-content">
+              <!-- New Start Stimulation Button -->
+              <button id="start-sim-action-btn" class="action-btn start-action-btn" onclick="startLabSimulation()" style="margin-bottom: 20px; background: #16a34a; color: white;">
+                ▶ Start Stimulation
+              </button>
+
               <div class="control-group">
-                <label>Stages of Atherosclerosis Condition</label>
+                <label>Choose the Stages of Atherosclerosis Condition</label>
                 <div class="stage-grid">
-                  <button class="stage-btn active" onclick="setStage('normal')" id="btn-normal">Healthy Artery</button>
-                  <button class="stage-btn" onclick="setStage('fatty')" id="btn-fatty">Fatty Streak</button>
-                  <button class="stage-btn" onclick="setStage('plaque')" id="btn-plaque">Fibrofatty Plaque</button>
-                  <button class="stage-btn" onclick="setStage('blocked')" id="btn-blocked">Complicated Plaque</button>
+                  <button class="stage-btn active" onclick="setStage('normal')" id="btn-normal" disabled>Healthy Artery</button>
+                  <button class="stage-btn" onclick="setStage('fatty')" id="btn-fatty" disabled>Fatty Streak</button>
+                  <button class="stage-btn" onclick="setStage('plaque')" id="btn-plaque" disabled>Fibrofatty Plaque</button>
+                  <button class="stage-btn" onclick="setStage('blocked')" id="btn-blocked" disabled>Complicated Plaque</button>
                 </div>
               </div>
 
               <div class="control-group">
                 <label>Artery Radius: <span id="radius-val">220px</span></label>
-                <input type="range" id="radius-slider" min="150" max="350" value="220">
+                <input type="range" id="radius-slider" min="150" max="350" value="220" disabled>
               </div>
 
               <div class="control-group">
                 <label>Pressure: <span id="pressure-val">Normal</span></label>
-                <input type="range" id="pressure-slider" min="1" max="100" value="50">
+                <input type="range" id="pressure-slider" min="1" max="100" value="50" disabled>
               </div>
 
               <div class="control-group">
                 <label>Flow Speed: <span id="speed-val">5 m/s</span></label>
-                <input type="range" id="speed-slider" min="1" max="10" value="5">
+                <input type="range" id="speed-slider" min="1" max="10" value="5" disabled>
               </div>
 
-              <button id="toggle-graph-btn" class="action-btn" onclick="toggleGraph()">
+              <button id="toggle-graph-btn" class="action-btn" onclick="toggleGraph()" disabled>
                 Show Analysis Graph 📈
               </button>
 
-              <button id="reset-btn" class="action-btn" onclick="resetSimulation()" style="margin-top: 10px;"> Reset
+              <button id="reset-btn" class="action-btn" onclick="resetSimulation()" style="margin-top: 10px;" disabled> Reset
                 Simulation ↺
               </button>
 
