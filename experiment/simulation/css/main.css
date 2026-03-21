@@ -530,6 +530,13 @@ header h1 {
   color: var(--text-main);
 }
 
+/* Green Start Stimulation Button Overrides */
+.start-action-btn:hover {
+  background: #15803d !important; /* Slightly darker green */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+}
+
 .sidebar h2 {
   margin: 0;
   font-size: 1.3rem;
@@ -586,6 +593,16 @@ header h1 {
 .stage-btn.active::after {
   content: '●';
   font-size: 0.8rem;
+}
+
+/* --- Disabled States --- */
+.stage-btn:disabled,
+.action-btn:disabled,
+input[type=range]:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+  filter: grayscale(100%);
 }
 
 /* Sliders */
@@ -1464,7 +1481,8 @@ input[type=range] {
     top: auto;
     left: 0;
     width: 100%;
-    height: 320px; /* Slight increase for larger fonts */
+    height: 320px;
+    /* Slight increase for larger fonts */
     border-right: none;
     border-top: 1px solid var(--glass-border);
     border-radius: 20px 20px 0 0;
