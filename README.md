@@ -20,6 +20,7 @@ This virtual simulation within the Biomedical Engineering Instrumentation Virtua
 
 SrNo | Name | Faculty or Student | Department| Institute | Email id
 :--|:--|:--|:--|:--|:--|
-1 | Sreelekshmi S | Project Assistant | Amrita Virtual Labs | Amrita Vishwa Vidyapeetham | sreelekshmis@am.amrita.edu
-2 | Nijin N | Research Associate | Amrita Virtual Labs | Amrita Vishwa Vidyapeetham | nijinn@am.amrita.edu
-3 | Dhanush Kumar | Development Engineer | Amrita Virtual Labs | Amrita Vishwa Vidyapeetham | dhanushkumar@am.amrita.edu
+1 | Kashinath B R | Student | School of Biotechnology | Amrita Vishwa Vidyapeetham | am.ls.p2bif25019@am.students.amrita.edu
+2 | Sreelekshmi S | Project Assistant | Amrita Virtual Labs | Amrita Vishwa Vidyapeetham | sreelekshmis@am.amrita.edu
+3 | Nijin N | Research Associate | Amrita Virtual Labs | Amrita Vishwa Vidyapeetham | nijinn@am.amrita.edu
+4 | Dhanush Kumar | Development Engineer | Amrita Virtual Labs | Amrita Vishwa Vidyapeetham | dhanushkumar@am.amrita.edu
