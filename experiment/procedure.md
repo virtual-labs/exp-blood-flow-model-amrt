@@ -3,7 +3,7 @@
 1. Users can open the simulator window. The GUI displays a human circulatory system model with the heart and major arteries highlighted.
 
 <p align="center">
-  <img src="images/p1.jpg" title="Step1" />
+  <img src="images/p1.png" title="Step1" />
 </p>
 
 &nbsp;
@@ -19,7 +19,7 @@
 3. Once clicking on the blinking point, the simulator opens to the main simulation interface.
 
 <p align="center">
-  <img src="images/p1.jpg" title="Step1" />
+  <img src="images/p1.png" title="Step1" />
 </p>
 
 &nbsp;
@@ -42,7 +42,7 @@
 7. Click on the “Show Analysis Graph” to view a graphical representation of flow parameters.
 
 <p align="center">
-  <img src="images/p1.jpg" title="Step1" />
+  <img src="images/p1.png" title="Step1" />
 </p>
 
 &nbsp;
@@ -57,7 +57,7 @@
 9. In case of fatty streak condition, the artery model updates to show initial plaque deposition along the vessel walls. The yellow deposits (fatty streaks) along the inner arterial wall cause slight narrowing of the lumen.
 
 <p align="center">
-  <img src="images/p1.jpg" title="Step1" />
+  <img src="images/p1.png" title="Step1" />
 </p>
 
 &nbsp;
@@ -76,7 +76,7 @@
 12. In case of fibro fatty plaque condition, the artery model updates to show advanced plaque accumulation in the arterial wall. Thicker yellow deposit along the inner arterial wall causes significant reduction in the lumen diameter.
 
 <p align="center">
-  <img src="images/p1.jpg" title="Step1" />
+  <img src="images/p1.png" title="Step1" />
 </p>
 
 &nbsp;
@@ -95,7 +95,7 @@
 15. In case of a complicated plaque condition, the artery model updates to show a severely diseased artery. Large plaque accumulation in the arterial wall significantly blocks the artery.
 
 <p align="center">
-  <img src="images/p1.jpg" title="Step1" />
+  <img src="images/p1.png" title="Step1" />
 </p>
 
 &nbsp;
