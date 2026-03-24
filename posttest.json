@@ -1,0 +1,77 @@
+
+{
+  "version": 2.0,
+  "questions": [
+    {
+          "question": "1. The factor that strongly influences blood flow in arteries is:",
+      "answers": {
+        "a": "Vessel color",
+        "b": "Vessel radius",
+        "c": "Blood temperature",
+        "d": "Heart size"
+      },
+ 
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },   
+
+
+
+    {
+      "question": "2. What is atherosclerosis?",
+      "answers": {
+        "a": "Infection of blood",
+        "b": "Narrowing of arteries due to plaque buildup",
+        "c": "Increase in blood pressure",
+        "d": "Enlargement of veins"
+      },
+      
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+
+
+
+    {
+      "question": "3. The role of arterioles in circulation is:",
+      "answers": {
+        "a": "Gas exchange",
+        "b": "Blood storage",
+        "c": "Regulation of resistance and flow",
+        "d": "Oxygen production"
+      },
+      
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+
+
+
+    {
+      "question": "4. The main effect of increased vascular resistance will cause:",
+      "answers": {
+        "a": "Increased blood flow",
+        "b": "Decreased blood flow",
+        "c": "No effect",
+        "d": "Increased oxygen diffusion"
+      },
+      
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+
+
+    {
+      "question": "5. According to Poiseuille’s Law, blood flow is proportional to:",
+      "answers": {
+        "a": "Radius",
+        "b": "Radius²",
+        "c": "Radius³",
+        "d": "Radius⁴"
+      },
+     
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+  ]
+}	 
